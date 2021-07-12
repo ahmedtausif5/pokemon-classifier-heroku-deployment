@@ -1,0 +1,138 @@
+    body {
+        background: rgb(50, 92, 142);
+        background: linear-gradient(90deg, hsla(0, 100%, 25%, 0.8) 13%, hsla(214, 87%, 36%, 1) 86%);
+    }
+    
+    h1 {
+        font-family: 'Otomanopee One', sans-serif;
+        text-align: center;
+        font-size: 75px;
+        color: white;
+    }
+    
+    #result {
+        text-align: center;
+    }
+    
+    button {
+        text-decoration: none;
+        background-color: #800000;
+        color: white;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    
+    button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    
+    .simple {
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        margin-top: 1%;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    #disclaimer {
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        margin-top: 1%;
+        font-weight: bold;
+        font-size: 10px;
+    }
+    
+    .authors {
+        text-align: center;
+    }
+    
+    footer a {
+        text-decoration: underline;
+        font-size: 20px;
+        font-family: 'Raleway', sans-serif;
+        color: #000000;
+        font-weight: bold;
+    }
+    /* UPLOAD POKEMON PAGE */
+    
+    #uploadPokemonBody {
+        background: rgb(120, 0, 0);
+    }
+    
+    #uploadh1 {
+        font-family: 'Otomanopee One', sans-serif;
+        text-align: center;
+        font-size: 80px;
+        color: white;
+        margin-top: 3%;
+    }
+    
+    #submit {
+        text-align: center;
+    }
+    
+    #submit form {
+        margin-top: 15%;
+    }
+    
+    input {
+        font-family: 'Raleway', sans-serif;
+        font-size: 20px;
+    }
+    
+    button {
+        text-decoration: none;
+        background-color: #800000;
+        color: white;
+        width: 150px;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
+    
+    button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
+    
+    footer {
+        margin-top: 5%;
+    }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title> Pokemon Classifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/uploadPokemonstyle.css') }}">
+    <!-- <link rel="stylesheet" href="css/uploadPokemonstyle.css" /> -->
+</head>
+
+<body>
+
+    <div class="section" id="which-pokemon" style="margin-top: 5%;">
+        <h1> Upload your image to find your spirit Pokemon!</h1>
+
+
+    </div>
+    <hr>
+    <div class="section" id="which-human">
+        <form style="margin-top:5%" action="{{ url_for('classifiedOwn') }}" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" />
+            <input type="submit" />
+        </form>
+    </div>
+    <div style="text-align:center">
+        <button onclick="location.href='{{ url_for('home') }}'" id="human-button">Back</button>
+    </div>
+
+
+    <footer>
+        <p class="simple"> Created with &#10084;&#65039; by</p>
+        <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
+        <div class="authors">
+            <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |
+                <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee" target="_blank">Mujibul Islam Dipto</a></p>
+        </div>
+        <p id="disclaimer"> Note: This is a personal project and is not related to Pokemon in any way.</p>
+    </footer>
+
+
+</body>
+
+</html>
+
+
+
+
+<!-- {% extends "base.html" %}
+
+{% block content %}
+  <h1>Upload your own image negga</h1>
+
+  <form action = "{{ url_for('classifiedOwn') }}" method = "POST"
+     enctype = "multipart/form-data">
+     <input type = "file" name = "file" />
+     <input type = "submit"/>
+  </form>
+
+  <br>
+
+  <p>note that our classifier was made to detect pokemons only. for humans in general, our classifier tends to return some particular pokemon like tauros, graveler, hitmonchan</p>
+{% endblock %} -->

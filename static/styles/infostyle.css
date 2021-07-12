@@ -1,0 +1,37 @@
+body {
+    background-color: black;
+}
+
+button {
+    text-decoration: none;
+    background-color: #800000;
+    color: white;
+    width: 120px;
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 35px;
+    padding: 0.4%;
+    margin: 1%;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 5%;
+}
+
+button:hover {
+    text-decoration: none;
+    background-color: #4169E1;
+    color: #ffffff;
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 35px;
+    font-weight: bold;
+    padding: 0.4%;
+    margin: 1%;
+    border: 3px solid #4169E1;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 5%;
+}

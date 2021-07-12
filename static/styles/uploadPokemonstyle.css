@@ -1,0 +1,243 @@
+    /* GLOBAL */
+    
+    body {
+        margin: 0;
+    }
+    
+    html {
+        height: 100%;
+        width: 100%;
+    }
+    
+    body {
+        display: table;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+    
+    .section {
+        display: table-row;
+        height: 20%;
+    }
+    
+    .section:nth-child(1) {
+        background-color: #800000;
+    }
+    
+    .section:nth-child(2) {
+        background-color: #000000
+    }
+    /* FIRST HALF */
+    
+    #which-pokemon {
+        color: white;
+        text-align: center;
+    }
+    
+    #which-pokemon h1 {
+        font-family: 'Otomanopee One', sans-serif;
+        text-align: center;
+        font-size: 75px;
+        padding: 3%;
+    }
+    
+    #which-pokemon p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 30px;
+        text-align: center;
+        font-weight: 100;
+    }
+    
+    #which-pokemon a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+    }
+    
+    #which-pokemon a:hover {
+        text-decoration: underline;
+    }
+    
+    #which-pokemon button {
+        text-decoration: none;
+        background-color: white;
+        color: #800000;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-bottom: 5%;
+    }
+    
+    #which-pokemon button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-bottom: 10%;
+    }
+    
+    hr {
+        height: 30px;
+        background-color: black;
+        border: 0px;
+        margin: 0;
+    }
+    /* SECOND HALF */
+    
+    #which-human {
+        text-align: center;
+    }
+    
+    #which-human h1 {
+        font-family: 'Otomanopee One', sans-serif;
+        text-align: center;
+        font-size: 80px;
+    }
+    
+    #which-human p {
+        font-family: 'Raleway', sans-serif;
+        font-size: 30px;
+        font-weight: 100;
+        text-align: center;
+    }
+    
+    #which-human button {
+        text-decoration: none;
+        background-color: #800000;
+        color: white;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    
+    #which-human button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0.8%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+    }
+    /* FOOTER */
+    
+    .simple {
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        margin-top: 1%;
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    #disclaimer {
+        font-family: 'Raleway', sans-serif;
+        text-align: center;
+        margin-top: 1%;
+        font-weight: bold;
+        font-size: 10px;
+    }
+    
+    .authors {
+        text-align: center;
+    }
+    
+    footer a {
+        text-decoration: underline;
+        font-size: 20px;
+        font-family: 'Raleway', sans-serif;
+        color: #000000;
+        font-weight: bold;
+    }
+    /* UPLOAD POKEMON PAGE */
+    
+    #uploadPokemonBody {
+        background: rgb(120, 0, 0);
+    }
+    
+    #uploadh1 {
+        font-family: 'Otomanopee One', sans-serif;
+        text-align: center;
+        font-size: 80px;
+        color: white;
+        margin-top: 3%;
+    }
+    
+    #submit {
+        text-align: center;
+    }
+    
+    #submit form {
+        margin-top: 15%;
+    }
+    
+    input {
+        font-family: 'Raleway', sans-serif;
+        font-size: 20px;
+    }
+    
+    button {
+        text-decoration: none;
+        background-color: #800000;
+        color: white;
+        width: 150px;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
+    
+    button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 25px;
+        font-weight: bold;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
+    
+    footer {
+        margin-top: 20vh;
+    }
