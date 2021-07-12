@@ -1,4 +1,4 @@
-Python==3.6.13
+python==3.6.13
 absl-py==0.13.0
 alembic==0.9.9
 astunparse==1.6.3
