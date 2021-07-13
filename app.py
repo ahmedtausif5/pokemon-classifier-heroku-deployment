@@ -18,7 +18,7 @@ import shutil
 import random
 import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
-#import cv2
+import cv2
 from PIL import Image
 
 #################################################################
