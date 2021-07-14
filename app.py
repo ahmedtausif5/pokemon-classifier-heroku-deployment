@@ -2,8 +2,7 @@ from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import numpy as np
-import tensorflow as tf
-from tensorflow import keras
+from tensorflow.keras.applications.mobilenet import preprocess_input
 from tensorflow.keras.preprocessing import image
 import os
 from tensorflow.keras.models import load_model
@@ -263,11 +262,10 @@ def classifiedOwn():
        return render_template('classifiedOwn.html', pokemon = pokemon, pic1_location=pic1_location)
 
 
-
 def prepare_image(img):
     img_array = image.img_to_array(img)
     img_array_expanded_dims = np.expand_dims(img_array, axis=0)
-    return tf.keras.applications.mobilenet.preprocess_input(img_array_expanded_dims)
+    return preprocess_input(img_array_expanded_dims)
 
 
 
