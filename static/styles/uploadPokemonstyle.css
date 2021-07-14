@@ -241,3 +241,56 @@
     footer {
         margin-top: 20vh;
     }
+
+    @media only screen and (max-width: 950px) {
+        #which-pokemon h1 {
+            font-family: 'Otomanopee One', sans-serif;
+            text-align: center;
+            font-size: 30px;
+            padding: 3%;
+        }
+
+        #which-pokemon p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 15px;
+            text-align: center;
+            font-weight: 100;
+        }
+
+        button {
+            text-decoration: none;
+            background-color: #800000;
+            color: white;
+            width: 100px;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            padding: 0.2%;
+            margin: 1%;
+            border: 3px solid #000000;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 5%;
+        }
+        
+        button:hover {
+            text-decoration: none;
+            background-color: #4169E1;
+            color: #ffffff;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0.2%;
+            margin: 1%;
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-top: 5%;
+        }
+
+     
+    
+    }

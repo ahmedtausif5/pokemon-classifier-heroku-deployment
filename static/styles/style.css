@@ -192,3 +192,115 @@
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
     }
+
+
+    @media only screen and (max-width: 950px) {
+        #which-pokemon h1 {
+            font-family: 'Otomanopee One', sans-serif;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        #which-pokemon p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 18px;
+            text-align: center;
+            font-weight: 100;
+        }
+        #which-pokemon button {
+            text-decoration: none;
+            background-color: white;
+            color: #800000;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            padding: 0.8%;
+            margin: 1%;
+            border: 3px solid #000000;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-bottom: 5%;
+        }
+        
+        #which-pokemon button:hover {
+            text-decoration: none;
+            background-color: #4169E1;
+            color: #ffffff;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0.8%;
+            margin: 1%;
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            margin-bottom: 10%;
+        }
+
+        hr {
+            height: 20px;
+            background-color: black;
+            border: 0px;
+            margin: 0;
+        }
+
+        #which-human h1 {
+            font-family: 'Otomanopee One', sans-serif;
+            text-align: center;
+            font-size: 50px;
+        }
+
+        #which-human p {
+            font-family: 'Raleway', sans-serif;
+            font-size: 20px;
+            font-weight: 100;
+            text-align: center;
+        }
+
+        #which-human button {
+            text-decoration: none;
+            background-color: #800000;
+            color: white;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            padding: 0.8%;
+            margin: 1%;
+            border: 3px solid #000000;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        #which-human button:hover {
+            text-decoration: none;
+            background-color: #4169E1;
+            color: #ffffff;
+            font-family: 'Otomanopee One', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 0.8%;
+            margin: 1%;
+            border: 3px solid #4169E1;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .simple {
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+            margin-top: 0.1%;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+
+
+
+        
+      }
