@@ -6,7 +6,7 @@ from tensorflow.keras.applications.mobilenet import preprocess_input
 from tensorflow.keras.preprocessing import image
 import os
 from tensorflow.keras.models import load_model
-import cv2
+#import cv2
 from PIL import Image
 
 #importing the model
