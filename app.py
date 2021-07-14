@@ -1,12 +1,12 @@
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
-import numpy as np
+from numpy import array, argmax, expand_dims
 from tensorflow.keras.applications.mobilenet import preprocess_input
 from tensorflow.keras.preprocessing import image
-import os
+from os import listdir
 from tensorflow.keras.models import load_model
-import cv2
+from cv2 import resize, cvtColor, COLOR_GRAY2BGRA, COLOR_BGRA2BGR
 from PIL import Image
 
 #importing the model
@@ -187,26 +187,26 @@ def classifiedPokemon():
     if request.method == 'POST':
        data = request.files['file']
        img = Image.open(request.files['file'])
-       img = np.array(img)
-       img = cv2.resize(img,(224,224))
+       img = array(img)
+       img = resize(img,(224,224))
 
        #coverting channel 1 image to channel 3
        if len(img.shape)==2:
-           img = cv2.cvtColor(img,cv2.COLOR_GRAY2BGRA)
+           img = cvtColor(img, COLOR_GRAY2BGRA)
 
        #converting channel 4 image to channel 3
        if len(img.shape) > 2 and img.shape[2] == 4:
            #convert the image from RGBA2RGB
-           img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+           img = cvtColor(img, COLOR_BGRA2BGR)
 
        preprocessed_image = prepare_image(img)
        predictions = new_model.predict(preprocessed_image)
-       out = np.argmax(predictions)
+       out = argmax(predictions)
        pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
 
        #getting pokemon image directory
        list_dir_string = f'static/{pokemon}'
-       pokemon_image_directory = os.listdir(list_dir_string)
+       pokemon_image_directory = listdir(list_dir_string)
 
        #returning image
        pic1_name = pokemon_image_directory[0]
@@ -233,27 +233,27 @@ def classifiedOwn():
     if request.method == 'POST':
        data = request.files['file']
        img = Image.open(request.files['file'])
-       img = np.array(img)
-       img = cv2.resize(img,(224,224))
+       img = array(img)
+       img = resize(img,(224,224))
 
        #converting channel 1 image to channel 3
        if len(img.shape)==2:
-           img = cv2.cvtColor(img,cv2.COLOR_GRAY2BGRA)
+           img = cvtColor(img, COLOR_GRAY2BGRA)
 
        #converting channel 4 image to channel 3
        if len(img.shape) > 2 and img.shape[2] == 4:
            #convert the image from RGBA2RGB
-           img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+           img = cvtColor(img, COLOR_BGRA2BGR)
 
 
        preprocessed_image = prepare_image(img)
        predictions = new_model.predict(preprocessed_image)
-       out = np.argmax(predictions)
+       out = argmax(predictions)
        pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
 
        #getting pokemon image directory
        list_dir_string = f'static/{pokemon}'
-       pokemon_image_directory = os.listdir(list_dir_string)
+       pokemon_image_directory = listdir(list_dir_string)
 
        #returning image
        pic1_name = pokemon_image_directory[0]
@@ -264,7 +264,7 @@ def classifiedOwn():
 
 def prepare_image(img):
     img_array = image.img_to_array(img)
-    img_array_expanded_dims = np.expand_dims(img_array, axis=0)
+    img_array_expanded_dims = expand_dims(img_array, axis=0)
     return preprocess_input(img_array_expanded_dims)
 
 
