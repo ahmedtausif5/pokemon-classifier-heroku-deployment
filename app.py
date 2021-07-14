@@ -1,28 +1,3 @@
-# from flask import Flask, render_template, request
-# from werkzeug.utils import secure_filename
-# from werkzeug.datastructures import  FileStorage
-# import numpy as np
-# import tensorflow as tf
-# from tensorflow import keras
-# from tensorflow.keras.layers import Dense, Activation
-# from tensorflow.keras.optimizers import Adam
-# from tensorflow.keras.metrics import categorical_crossentropy
-# from tensorflow.keras.preprocessing.image import ImageDataGenerator
-# from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.models import Model
-# from tensorflow.keras.applications import imagenet_utils
-# from sklearn.metrics import confusion_matrix
-# import itertools
-# import os
-# import shutil
-# import random
-# import matplotlib.pyplot as plt
-# from tensorflow.keras.models import load_model
-# import cv2
-# from PIL import Image
-
-#################################################################
-
 from flask import Flask, render_template, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
@@ -30,18 +5,10 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 from tensorflow.keras.preprocessing import image
-# from tensorflow.keras.models import Model
-# import itertools
 import os
-# import shutil
-# import random
-# import matplotlib.pyplot as plt
 from tensorflow.keras.models import load_model
 import cv2
 from PIL import Image
-
-#################################################################
-
 
 #importing the model
 new_model = load_model('pokemon_classifier_dropout=8,6_lr=0.0001.h5')
@@ -305,4 +272,4 @@ def prepare_image(img):
 
 
 if __name__ == '__main__':
-   app.run(debug=True)
+   app.run()
