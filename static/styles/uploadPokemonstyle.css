@@ -246,13 +246,13 @@
         #which-pokemon h1 {
             font-family: 'Otomanopee One', sans-serif;
             text-align: center;
-            font-size: 30px;
-            padding: 3%;
+            font-size: 25px;
+            /* padding: 1%; */
         }
 
         #which-pokemon p {
             font-family: 'Raleway', sans-serif;
-            font-size: 15px;
+            font-size: 12px;
             text-align: center;
             font-weight: 100;
         }
