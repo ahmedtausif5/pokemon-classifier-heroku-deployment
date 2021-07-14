@@ -30,7 +30,7 @@
     <hr>
     <div class="section" id="which-human">
         <form style="margin-top:5%" action="{{ url_for('classifiedPokemon') }}" method="POST" enctype="multipart/form-data">
-            <input type="file" name="file" />
+            <input type="file" name="file" required />
             <input type="submit" />
         </form>
     </div>
