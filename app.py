@@ -221,6 +221,12 @@ def classifiedPokemon():
         prob_4 = round(predictions[0][top_5_pokemons_indexes[3]] * 100, 2)
         prob_5 = round(predictions[0][top_5_pokemons_indexes[4]] * 100, 2)
 
+        scale_1 =  (prob_1 / prob_1) * 100
+        scale_2 = (prob_2 / prob_1) * 100
+        scale_3 = (prob_3 / prob_1) * 100
+        scale_4 = (prob_4 / prob_1) * 100
+        scale_5 = (prob_5 / prob_1) * 100
+
         print(prob_1, prob_2, prob_3, prob_4, prob_5)
 
         pokemon_names = []
@@ -239,7 +245,8 @@ def classifiedPokemon():
             pic1_location = f'static/{pokemon}/{pic1_name}'
 
 
-            return render_template('classifiedPokemon.html', pokemon = pokemon, pic1_location=pic1_location)
+            return render_template('classifiedPokemon.html', 
+            pokemon = pokemon, pic1_location=pic1_location)
         else:
             return render_template('couldNotClassify.html')
 
@@ -301,6 +308,16 @@ def classifiedOwn():
         print(prob_1, prob_2, prob_3, prob_4, prob_5)
         top_5_prob_list = [prob_1, prob_2, prob_3, prob_4, prob_5]
 
+        
+
+        scale_1 =  (prob_1 / prob_1) * 70
+        scale_2 = (prob_2 / prob_1) * 70
+        scale_3 = (prob_3 / prob_1) * 70
+        scale_4 = (prob_4 / prob_1) * 70
+        scale_5 = (prob_5 / prob_1) * 70
+
+        scaled_list = [scale_1,scale_2,scale_3,scale_4, scale_5 ]
+        print(scaled_list)
         pokemon_names = []
         for pokemon_index in top_5_pokemons_indexes:
             pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(pokemon_index)])
@@ -352,7 +369,8 @@ def classifiedOwn():
                                                     pic4_location=pic4_location,
                                                     pic5_location=pic5_location,
                                                     top_5_prob_list=top_5_prob_list,
-                                                    pokemon_names=pokemon_names)
+                                                    pokemon_names=pokemon_names,
+                                                    scaled_list=scaled_list)
        else:
            print("Unsupported file uploaded")
            return render_template('wrongFile.html')
