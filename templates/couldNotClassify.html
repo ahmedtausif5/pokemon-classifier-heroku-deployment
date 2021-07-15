@@ -6,7 +6,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>You are...</title>
+    <title>Pokemon Classifier | No Match</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/classifiedPokemonstyle.css') }}">
     <!-- <link rel="stylesheet" href="css/classifiedPokemonstyle.css" /> -->
 
@@ -22,33 +22,15 @@
 </head>
 
 <body>
-    <div id="result">
-        <h1> You are {{pokemon}}! </h1>
-        <img src="{{pic1_location}}" height="500px" width="500px">
-    </div>
-    </br>
-    <div style="text-align:center">
-        <button style="width:220px" onclick="location.href='{{ url_for('uploadOwn') }}'">Try Another!</button>
-        <button onclick="location.href='{{ url_for('home') }}'">Home</button>
-    </div>
 
-
-    <ul>
-      <li>{{pokemon_names[0]}}: {{top_5_prob_list[0]}}%</li>
-      <li>{{pokemon_names[1]}}: {{top_5_prob_list[1]}}%</li>
-      <li>{{pokemon_names[2]}}: {{top_5_prob_list[2]}}%</li>
-      <li>{{pokemon_names[3]}}: {{top_5_prob_list[3]}}%</li>
-      <li>{{pokemon_names[4]}}: {{top_5_prob_list[4]}}%</li>
-    </ul>
-
-    <ul>
-      <li><img src="{{pic1_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic2_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic3_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic4_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic5_location}}" height="500px" width="500px"></li>
-    </ul>
-
+  <section>
+    <img src="static\Other\clipart646635.png" alt="Sad Pikachu" height="170px" width="150px">
+    <h1> Sorry we could not identify that Pokemon.</h1>
+    <h2> Possible reasons:</h2>
+    <p> It is not a Gen I Pokemon.</p>
+    <p> It is a greyscale or b/w image.</p>
+    <p> Still not working? Send us a report here with the image.</p>
+  </section>
 
 
     <footer>
