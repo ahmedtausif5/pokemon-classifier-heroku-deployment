@@ -185,59 +185,67 @@ def uploadPokemon():
 
 @app.route('/classifiedPokemon', methods = ['GET', 'POST'])
 def classifiedPokemon():
-    if request.method == 'POST':
+    
+    if request.method == 'POST':      
        data = request.files['file']
-       img = Image.open(request.files['file'])
-       img = array(img)
-       img = resize(img,(224,224))
+       
+       try: img = Image.open(request.files['file'])
+       except: img = None
 
-       #coverting channel 1 image to channel 3
-       if len(img.shape)==2:
-           img = cvtColor(img, COLOR_GRAY2BGRA)
+       if img is not None:
+        img = array(img)
+        img = resize(img,(224,224))
 
-       #converting channel 4 image to channel 3
-       if len(img.shape) > 2 and img.shape[2] == 4:
-           #convert the image from RGBA2RGB
-           img = cvtColor(img, COLOR_BGRA2BGR)
+        #coverting channel 1 image to channel 3
+        if len(img.shape)==2:
+            img = cvtColor(img, COLOR_GRAY2BGRA)
 
-       preprocessed_image = prepare_image(img)
-       predictions = new_model.predict(preprocessed_image)
-       out = argmax(predictions)
-       pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
+        #converting channel 4 image to channel 3
+        if len(img.shape) > 2 and img.shape[2] == 4:
+            #convert the image from RGBA2RGB
+            img = cvtColor(img, COLOR_BGRA2BGR)
 
-       order_indexes = (argsort(predictions))
-       # print(order_indexes)
-       top_5_pokemons_indexes = [order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3], order_indexes[0][-4],
-                         order_indexes[0][-5]]
+        preprocessed_image = prepare_image(img)
+        predictions = new_model.predict(preprocessed_image)
+        out = argmax(predictions)
+        pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
 
-       prob_1 = round(predictions[0][top_5_pokemons_indexes[0]] * 100, 2)
-       prob_2 = round(predictions[0][top_5_pokemons_indexes[1]] * 100, 2)
-       prob_3 = round(predictions[0][top_5_pokemons_indexes[2]] * 100, 2)
-       prob_4 = round(predictions[0][top_5_pokemons_indexes[3]] * 100, 2)
-       prob_5 = round(predictions[0][top_5_pokemons_indexes[4]] * 100, 2)
+        order_indexes = (argsort(predictions))
+        # print(order_indexes)
+        top_5_pokemons_indexes = [order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3], order_indexes[0][-4],
+                            order_indexes[0][-5]]
 
-       print(prob_1, prob_2, prob_3, prob_4, prob_5)
+        prob_1 = round(predictions[0][top_5_pokemons_indexes[0]] * 100, 2)
+        prob_2 = round(predictions[0][top_5_pokemons_indexes[1]] * 100, 2)
+        prob_3 = round(predictions[0][top_5_pokemons_indexes[2]] * 100, 2)
+        prob_4 = round(predictions[0][top_5_pokemons_indexes[3]] * 100, 2)
+        prob_5 = round(predictions[0][top_5_pokemons_indexes[4]] * 100, 2)
 
-       pokemon_names = []
-       for pokemon_index in top_5_pokemons_indexes:
-           pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(pokemon_index)])
+        print(prob_1, prob_2, prob_3, prob_4, prob_5)
 
-       print(pokemon_names)
-       print(prob_1)
-       if prob_1 >=70:
-           #getting pokemon image directory
-           list_dir_string = f'static/{pokemon}'
-           pokemon_image_directory = listdir(list_dir_string)
+        pokemon_names = []
+        for pokemon_index in top_5_pokemons_indexes:
+            pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(pokemon_index)])
 
-           #returning image
-           pic1_name = pokemon_image_directory[0]
-           pic1_location = f'static/{pokemon}/{pic1_name}'
+        print(pokemon_names)
+        print(prob_1)
+        if prob_1 >=70:
+            #getting pokemon image directory
+            list_dir_string = f'static/{pokemon}'
+            pokemon_image_directory = listdir(list_dir_string)
+
+            #returning image
+            pic1_name = pokemon_image_directory[0]
+            pic1_location = f'static/{pokemon}/{pic1_name}'
 
 
-           return render_template('classifiedPokemon.html', pokemon = pokemon, pic1_location=pic1_location)
+            return render_template('classifiedPokemon.html', pokemon = pokemon, pic1_location=pic1_location)
+        else:
+            return render_template('couldNotClassify.html')
+
        else:
-           return render_template('couldNotClassify.html')
-
+           print("Unsupported file uploaded")
+           return render_template('wrongFile.html')
        #return render_template('home.html')
 
 
@@ -254,94 +262,100 @@ def uploadOwn():
 
 @app.route('/classifiedOwn', methods = ['GET', 'POST'])
 def classifiedOwn():
-    if request.method == 'POST':
+    if request.method == 'POST':      
        data = request.files['file']
-       img = Image.open(request.files['file'])
-       img = array(img)
-       img = resize(img,(224,224))
+       
+       try: img = Image.open(request.files['file'])
+       except: img = None
 
-       #converting channel 1 image to channel 3
-       if len(img.shape)==2:
-           img = cvtColor(img, COLOR_GRAY2BGRA)
+       if img is not None:
+        img = array(img)
+        img = resize(img,(224,224))
 
-       #converting channel 4 image to channel 3
-       if len(img.shape) > 2 and img.shape[2] == 4:
-           #convert the image from RGBA2RGB
-           img = cvtColor(img, COLOR_BGRA2BGR)
+        #converting channel 1 image to channel 3
+        if len(img.shape)==2:
+            img = cvtColor(img, COLOR_GRAY2BGRA)
 
-
-       preprocessed_image = prepare_image(img)
-       predictions = new_model.predict(preprocessed_image)
-       out = argmax(predictions)
-       pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
-
-       order_indexes = (argsort(predictions))
-       # print(order_indexes)
-       top_5_pokemons_indexes = [order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3], order_indexes[0][-4],
-                         order_indexes[0][-5]]
-
-       prob_1 = round(predictions[0][top_5_pokemons_indexes[0]] * 100, 2)
-       prob_2 = round(predictions[0][top_5_pokemons_indexes[1]] * 100, 2)
-       prob_3 = round(predictions[0][top_5_pokemons_indexes[2]] * 100, 2)
-       prob_4 = round(predictions[0][top_5_pokemons_indexes[3]] * 100, 2)
-       prob_5 = round(predictions[0][top_5_pokemons_indexes[4]] * 100, 2)
-
-       print(prob_1, prob_2, prob_3, prob_4, prob_5)
-       top_5_prob_list = [prob_1, prob_2, prob_3, prob_4, prob_5]
-
-       pokemon_names = []
-       for pokemon_index in top_5_pokemons_indexes:
-           pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(pokemon_index)])
-
-       print(pokemon_names)
+        #converting channel 4 image to channel 3
+        if len(img.shape) > 2 and img.shape[2] == 4:
+            #convert the image from RGBA2RGB
+            img = cvtColor(img, COLOR_BGRA2BGR)
 
 
+        preprocessed_image = prepare_image(img)
+        predictions = new_model.predict(preprocessed_image)
+        out = argmax(predictions)
+        pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
 
-       #getting pokemon image directory
-       #pokemon 1
-       list_dir_string_1 = f'static/{pokemon_names[0]}'
-       pokemon_1_image_directory = listdir(list_dir_string_1)
-       #pokemon 2
-       list_dir_string_2 = f'static/{pokemon_names[1]}'
-       pokemon_2_image_directory = listdir(list_dir_string_2)
-       #pokemon 3
-       list_dir_string_3 = f'static/{pokemon_names[2]}'
-       pokemon_3_image_directory = listdir(list_dir_string_3)
-       #pokemon 4
-       list_dir_string_4 = f'static/{pokemon_names[3]}'
-       pokemon_4_image_directory = listdir(list_dir_string_4)
-       #pokemon 5
-       list_dir_string_5 = f'static/{pokemon_names[4]}'
-       pokemon_5_image_directory = listdir(list_dir_string_5)
+        order_indexes = (argsort(predictions))
+        # print(order_indexes)
+        top_5_pokemons_indexes = [order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3], order_indexes[0][-4],
+                            order_indexes[0][-5]]
+
+        prob_1 = round(predictions[0][top_5_pokemons_indexes[0]] * 100, 2)
+        prob_2 = round(predictions[0][top_5_pokemons_indexes[1]] * 100, 2)
+        prob_3 = round(predictions[0][top_5_pokemons_indexes[2]] * 100, 2)
+        prob_4 = round(predictions[0][top_5_pokemons_indexes[3]] * 100, 2)
+        prob_5 = round(predictions[0][top_5_pokemons_indexes[4]] * 100, 2)
+
+        print(prob_1, prob_2, prob_3, prob_4, prob_5)
+        top_5_prob_list = [prob_1, prob_2, prob_3, prob_4, prob_5]
+
+        pokemon_names = []
+        for pokemon_index in top_5_pokemons_indexes:
+            pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(pokemon_index)])
+
+        print(pokemon_names)
 
 
 
-       #returning image
-       #returning pokemon 1 image
-       pic1_name = pokemon_1_image_directory[0]
-       pic1_location = f'static/{pokemon_names[0]}/{pic1_name}'
-       #returning pokemon 2 image
-       pic2_name = pokemon_2_image_directory[1]
-       pic2_location = f'static/{pokemon_names[1]}/{pic2_name}'
-       #returning pokemon 3 image
-       pic3_name = pokemon_3_image_directory[2]
-       pic3_location = f'static/{pokemon_names[2]}/{pic3_name}'
-       #returning pokemon 4 image
-       pic4_name = pokemon_4_image_directory[3]
-       pic4_location = f'static/{pokemon_names[3]}/{pic4_name}'
-       #returning pokemon 5 image
-       pic5_name = pokemon_5_image_directory[4]
-       pic5_location = f'static/{pokemon_names[4]}/{pic5_name}'
+        #getting pokemon image directory
+        #pokemon 1
+        list_dir_string_1 = f'static/{pokemon_names[0]}'
+        pokemon_1_image_directory = listdir(list_dir_string_1)
+        #pokemon 2
+        list_dir_string_2 = f'static/{pokemon_names[1]}'
+        pokemon_2_image_directory = listdir(list_dir_string_2)
+        #pokemon 3
+        list_dir_string_3 = f'static/{pokemon_names[2]}'
+        pokemon_3_image_directory = listdir(list_dir_string_3)
+        #pokemon 4
+        list_dir_string_4 = f'static/{pokemon_names[3]}'
+        pokemon_4_image_directory = listdir(list_dir_string_4)
+        #pokemon 5
+        list_dir_string_5 = f'static/{pokemon_names[4]}'
+        pokemon_5_image_directory = listdir(list_dir_string_5)
 
-       return render_template('classifiedOwn.html',pokemon = pokemon,
-                                                   pic1_location=pic1_location,
-                                                   pic2_location=pic2_location,
-                                                   pic3_location=pic3_location,
-                                                   pic4_location=pic4_location,
-                                                   pic5_location=pic5_location,
-                                                   top_5_prob_list=top_5_prob_list,
-                                                   pokemon_names=pokemon_names)
 
+
+        #returning image
+        #returning pokemon 1 image
+        pic1_name = pokemon_1_image_directory[0]
+        pic1_location = f'static/{pokemon_names[0]}/{pic1_name}'
+        #returning pokemon 2 image
+        pic2_name = pokemon_2_image_directory[1]
+        pic2_location = f'static/{pokemon_names[1]}/{pic2_name}'
+        #returning pokemon 3 image
+        pic3_name = pokemon_3_image_directory[2]
+        pic3_location = f'static/{pokemon_names[2]}/{pic3_name}'
+        #returning pokemon 4 image
+        pic4_name = pokemon_4_image_directory[3]
+        pic4_location = f'static/{pokemon_names[3]}/{pic4_name}'
+        #returning pokemon 5 image
+        pic5_name = pokemon_5_image_directory[4]
+        pic5_location = f'static/{pokemon_names[4]}/{pic5_name}'
+
+        return render_template('classifiedOwn.html',pokemon = pokemon,
+                                                    pic1_location=pic1_location,
+                                                    pic2_location=pic2_location,
+                                                    pic3_location=pic3_location,
+                                                    pic4_location=pic4_location,
+                                                    pic5_location=pic5_location,
+                                                    top_5_prob_list=top_5_prob_list,
+                                                    pokemon_names=pokemon_names)
+       else:
+           print("Unsupported file uploaded")
+           return render_template('wrongFile.html')
 
 def prepare_image(img):
     img_array = image.img_to_array(img)

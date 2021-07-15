@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Pokemon Classifier | Wrong File</title>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/classifiedPokemonstyle.css') }}">
+    <!-- <link rel="stylesheet" href="css/classifiedPokemonstyle.css" /> -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
+
+<body id="noMatchBody">
+
+  <section id="error">
+    <img id="confused" src="static\Other\confused.png" alt="Sad Pikachu">
+    <h1 style="color:#FF8C00;">Sorry!</h1>
+    <h1>The file you uploaded is not a valid image.</h1>
+    <p>Think something is wrong? Send us a report <a href="https://github.com/MujiDipto/pokemon-classifier/issues" target="_blank">here</a> with the file.</p>
+  </section>
+  <div style="text-align:center" onclick="">
+    <button id="tryButton" onclick="location.href='{{ url_for('uploadPokemon') }}'">Try Again</button>
+    <button onclick="location.href='{{ url_for('home') }}'">Home</button>
+</div>
+
+    <footer style="text-align: center;">
+        <p class="simple" style="font-size: 12px;"> Created with &#10084;&#65039; by</p>
+        <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
+        <div class="authors">
+            <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |
+                <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee" target="_blank">Mujibul Islam Dipto</a></p>
+        </div>
+        <p id="disclaimer"> Note: This is a personal project and is not related to Pokemon in any way.</p>
+        
+    </footer>
+</body>
+
+</html>
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>you are {{pokemon}}</h1>
+    <p>{{pic1_location}}</p>
+    <img src="{{pic1_location}}" alt="">
+  </body>
+</html> -->

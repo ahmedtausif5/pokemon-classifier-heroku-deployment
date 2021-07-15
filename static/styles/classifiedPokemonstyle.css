@@ -169,7 +169,10 @@
     height:170px;
     width:150px;
 }
-
+#confused {
+    height: 200px;
+    width: 200px;
+}
 #error a {
     color: white;
     font-weight: bold;
@@ -203,6 +206,10 @@ hr {
     #sadge {
         height:120px;
         width:100px;
+    }
+    #confused {
+        height: 120px;
+        width: 120px;
     }
 
     button {
