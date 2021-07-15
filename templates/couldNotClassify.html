@@ -21,20 +21,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body id="noMatchBody">
 
-  <section>
-    <img src="static\Other\clipart646635.png" alt="Sad Pikachu" height="170px" width="150px">
-    <h1> Sorry we could not identify that Pokemon.</h1>
+  <section id="error">
+    <img id="sadge" src="static\Other\clipart646635.png" alt="Sad Pikachu">
+    <h1 style="color:#FF8C00;">Sorry!</h1>
+    <h1>We could not identify that Pokemon.</h1>
     <h2> Possible reasons:</h2>
-    <p> It is not a Gen I Pokemon.</p>
+    <p> It is not a <a href="https://www.serebii.net/pokemon/gen1pokemon.shtml" target="_blank">Gen I Pokemon.</a></p>
     <p> It is a greyscale or b/w image.</p>
-    <p> Still not working? Send us a report here with the image.</p>
+    <br>
+    <p> Still not working? Send us a report <a href="https://github.com/MujiDipto/pokemon-classifier/issues" target="_blank">here</a> with the image.</p>
   </section>
+  <div style="text-align:center" onclick="">
+    <button id="tryButton" onclick="location.href='{{ url_for('uploadPokemon') }}'">Try Another!</button>
+    <button onclick="location.href='{{ url_for('home') }}'">Home</button>
+</div>
 
-
-    <footer>
-        <p class="simple"> Created with &#10084;&#65039; by</p>
+    <footer style="text-align: center;">
+        <p class="simple" style="font-size: 12px;"> Created with &#10084;&#65039; by</p>
         <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
         <div class="authors">
             <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |

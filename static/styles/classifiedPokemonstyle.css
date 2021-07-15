@@ -3,6 +3,13 @@
         background: linear-gradient(90deg, hsla(0, 100%, 25%, 0.8) 13%, hsla(214, 87%, 36%, 1) 86%);
     }
     
+    #noMatchBody {
+        background: #8E0E00;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #1F1C18, #8E0E00);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #1F1C18, #8E0E00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    }
+
     h1 {
         font-family: 'Otomanopee One', sans-serif;
         text-align: center;
@@ -137,4 +144,116 @@
         margin-top: 5%;
     }
 
+
+/* COULD NOT CLASSIFY PAGE */
+
+#error {
+    text-align: center;
+}
+
+#error p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 28px;
+    text-align: center;
+    font-weight: 100;
+    color: white;
+}
+
+#error h2 {
+    color:#FF8C00;
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 35px;
+}
+
+#sadge {
+    height:170px;
+    width:150px;
+}
+
+#error a {
+    color: white;
+    font-weight: bold;
+}
+
+hr {
+    color: white;
+    width: 50%;
+    border-radius: 12%;
+}
+
+#tryButton {
+    width: 220px;
+}
+
+@media only screen and (max-width: 950px) {
+
+    #error h1 {
+        font-size: 25px;
+    }
+
+    #error h2 {
+        font-size: 22px;
+    }
+
+    #error p {
+        font-size: 18px;
+        color: white;
+    }
+
+    #sadge {
+        height:120px;
+        width:100px;
+    }
+
+    button {
+        text-decoration: none;
+        background-color: #800000;
+        color: white;
+        width: 80px;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 15px;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #000000;
+        border-radius: 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
     
+    button:hover {
+        text-decoration: none;
+        background-color: #4169E1;
+        color: #ffffff;
+        font-family: 'Otomanopee One', sans-serif;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 0.2%;
+        margin: 1%;
+        border: 3px solid #4169E1;
+        border-radius: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        margin-top: 5%;
+    }
+    #tryButton {
+        width: 140px;
+    }
+
+
+    footer p {
+        font-size: 12px;
+    }
+
+    #disclaimer {
+        font-size: 10px;
+    }
+
+    .authors a, p{
+        font-size: 12px;
+    }
+
+
+}
