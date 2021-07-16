@@ -54,9 +54,9 @@
     </div>
   </div>
   <div style="text-align:center">
-        <button style="width:220px" onclick="location.href='{{ url_for('uploadOwn') }}'">Try Another!</button>
+        <button id="tryButton" onclick="location.href='{{ url_for('uploadOwn') }}'">Try Another!</button>
         <button onclick="location.href='{{ url_for('home') }}'">Home</button>
-        
+
     </div>
   </section>
   <br>
@@ -95,7 +95,7 @@
         fill: {gradient: ['#ff8008', '#ffc837']}
       }
 
-      
+
 
       $(".circle .bar").circleProgress(options).on('circle-animation-progress',
       function(event, progress, stepValue){

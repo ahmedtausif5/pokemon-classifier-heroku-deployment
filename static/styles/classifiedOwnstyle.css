@@ -15,9 +15,9 @@ body{
   background: #200122;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to top, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
- 
-  
-  
+
+
+
 }
 
 .wrapper{
@@ -32,7 +32,7 @@ background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Fir
   background: #780206;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to bottom, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+
 
   width: calc(33% - 20px);
   /* height: 300px; */
@@ -102,7 +102,7 @@ h1 {
   font-family: 'Raleway', sans-serif;
 }
 
-  
+
 .simple {
     font-family: 'Raleway', sans-serif;
     text-align: center;
@@ -124,7 +124,7 @@ h1 {
     font-weight: bold;
     font-size: 10px;
 }
- 
+
 button {
     text-decoration: none;
     background-color: #800000;
