@@ -328,16 +328,16 @@ def classifiedOwn():
         pic1_name = pokemon_1_image_directory[0]
         pic1_location = f'../static/{pokemon_names[0]}/{pic1_name}'
         #returning pokemon 2 image
-        pic2_name = pokemon_2_image_directory[1]
+        pic2_name = pokemon_2_image_directory[0]
         pic2_location = f'../static/{pokemon_names[1]}/{pic2_name}'
         #returning pokemon 3 image
-        pic3_name = pokemon_3_image_directory[2]
+        pic3_name = pokemon_3_image_directory[0]
         pic3_location = f'../static/{pokemon_names[2]}/{pic3_name}'
         #returning pokemon 4 image
-        pic4_name = pokemon_4_image_directory[3]
+        pic4_name = pokemon_4_image_directory[0]
         pic4_location = f'../static/{pokemon_names[3]}/{pic4_name}'
         #returning pokemon 5 image
-        pic5_name = pokemon_5_image_directory[4]
+        pic5_name = pokemon_5_image_directory[0]
         pic5_location = f'../static/{pokemon_names[4]}/{pic5_name}'
 
         # print(pic1_location)
