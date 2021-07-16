@@ -20,7 +20,9 @@
     #result {
         text-align: center;
     }
-    
+    a:hover {
+        color: white;
+    }
     button {
         text-decoration: none;
         background-color: #800000;

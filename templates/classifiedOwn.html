@@ -1,15 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>You are...</title>
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/classifiedPokemonstyle.css') }}">
-    <!-- <link rel="stylesheet" href="css/classifiedPokemonstyle.css" /> -->
-
+<!-- Created By CodingNepal - www.codingnepalweb.com -->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pokemon Classifier | You are...</title>
+    <link rel="stylesheet" href="static\styles\classifiedOwnstyle.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Otomanopee+One&display=swap" rel="stylesheet">
@@ -19,92 +14,101 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-</head>
-
-<body>
-    <div id="result">
-        <h1> You are {{pokemon}}! </h1>
-        <img src="{{pic1_location}}" height="500px" width="500px">
-    </div>
-    </br>
-    <div style="text-align:center">
-        <button style="width:220px" onclick="location.href='{{ url_for('uploadOwn') }}'">Try Another!</button>
-        <button onclick="location.href='{{ url_for('home') }}'">Home</button>
-    </div>
-
-
-    <ul>
-      <li>{{pokemon_names[0]}}: {{top_5_prob_list[0]}}%</li>
-      <li>{{pokemon_names[1]}}: {{top_5_prob_list[1]}}%</li>
-      <li>{{pokemon_names[2]}}: {{top_5_prob_list[2]}}%</li>
-      <li>{{pokemon_names[3]}}: {{top_5_prob_list[3]}}%</li>
-      <li>{{pokemon_names[4]}}: {{top_5_prob_list[4]}}%</li>
-    </ul>
-
-    <ul>
-      <li><img src="{{pic1_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic2_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic3_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic4_location}}" height="500px" width="500px"></li>
-      <li><img src="{{pic5_location}}" height="500px" width="500px"></li>
-    </ul>
-
-    <div class="w3-container" style="width: 50%;color:black">
-
-      <div class="w3-border">
-        <div class="w3-green" style="height:24px;width:{{scaled_list[0]}}%"></div>
-      </div>
-      <br>
-      <div class="w3-border">
-        <div class="w3-blue" style="height:24px;width:{{scaled_list[1]}}%"></div>
-      </div>
-      <br>
-      <div class="w3-border">
-        <div class="w3-yellow" style="height:24px;width:{{scaled_list[2]}}%"></div>
-      </div>
-      <br>
-      <div class="w3-border">
-        <div class="w3-red" style="height:24px;width:{{scaled_list[3]}}%"></div>
-      </div>
-      <br>
-      <div class="w3-border">
-        <div class="w3-orange" style="height:24px;width:{{scaled_list[4]}}%"></div>
-      </div>
-
-      
-    </div>
-
-
-    <footer>
-        <p class="simple"> Created with &#10084;&#65039; by</p>
-        <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
-        <div class="authors">
-            <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |
-                <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee" target="_blank">Mujibul Islam Dipto</a></p>
-        </div>
-        <p class="disclaimer"> Note: This is a personal project and is not related to Pokemon in any way.</p>
-        <p class="disclaimer"> Image source:https://www.clipartmax.com</p>
-    </footer>
-</body>
-
-</html>
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="viewport" content="width=device-width;"> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.2/circle-progress.min.js"></script>
   </head>
   <body>
-    <h1>you are {{pokemon}}</h1>
-    <p>{{pic1_location}}</p>
-    <img src="{{pic1_location}}" alt="">
+
+    <section>
+      <h1> Your top 3 matches are:</h1>
+      <br>
+      <br>
+      <br>
+    </section>
+    <section>
+      <div></div>
+    <div class="wrapper">
+      <div class="card">
+        <div class="circle">
+          <div class="bar"></div>
+          <div class="box" style="background-image: url('{{pic1_location}}')"><span></span></div>
+        </div>
+        <div class="text">{{pokemon_names[0]}}</div>
+      </div>
+      <div class="card js">
+        <div class="circle">
+          <div class="bar"></div>
+          <div class="box"  style="background-image: url('{{pic2_location}}')"><span></span></div>
+        </div>
+        <div class="text">{{pokemon_names[1]}}</div>
+      </div>
+      <div class="card react">
+        <div class="circle">
+          <div class="bar"></div>
+          <div class="box"  style="background-image: url('{{pic3_location}}')"><span></span></div>
+        </div>
+        <div class="text">{{pokemon_names[2]}}</div>
+      </div>
+    </div>
+  </div>
+  <div style="text-align:center">
+        <button style="width:220px" onclick="location.href='{{ url_for('uploadOwn') }}'">Try Another!</button>
+        <button onclick="location.href='{{ url_for('home') }}'">Home</button>
+        
+    </div>
+  </section>
+  <br>
+  <br>
+    <div class="line-break"></div>
+    <footer>
+      <p class="simple"> Created with &#10084;&#65039; by</p>
+      <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
+      <div class="authors">
+          <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |
+              <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee" target="_blank">Mujibul Islam Dipto</a></p>
+      </div>
+      <p class="disclaimer"> Note: This is a personal project and is not related to Pokemon in any way.</p>
+      <p class="disclaimer"> Image source:https://www.clipartmax.com</p>
+  </footer>
+</body>
+
+    <script>
+
+      var viewportWidth = $(window).width();
+
+      w = 0;
+
+      if (viewportWidth < 800) {
+          w = 200;
+      }
+      else {
+        w = 500;
+      }
+
+      let options = {
+        startAngle: -1.55,
+        // size: 150,
+        size: w,
+        value: {{scaled_list[0]}},
+        fill: {gradient: ['#ff8008', '#ffc837']}
+      }
+
+      
+
+      $(".circle .bar").circleProgress(options).on('circle-animation-progress',
+      function(event, progress, stepValue){
+        // $(this).parent().find("span").text(String(stepValue.toFixed(2).substr(2)) + "s%");
+      });
+      $(".js .bar").circleProgress({
+        value: {{scaled_list[1]}}
+      });
+      $(".react .bar").circleProgress({
+        value: {{scaled_list[2]}}
+      });
+
+    </script>
+
   </body>
-</html> -->
+</html>

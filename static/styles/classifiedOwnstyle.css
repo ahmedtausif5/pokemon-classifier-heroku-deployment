@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  /* display: flex; */
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: #200122;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to top, #6f0000, #200122);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to top, #6f0000, #200122); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ 
+  
+  
+}
+
+.wrapper{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.wrapper .card{
+  /* background: #000033; */
+  background: #780206;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+
+  width: calc(33% - 20px);
+  /* height: 300px; */
+  height: 700px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+
+h1 {
+    font-family: 'Otomanopee One', sans-serif;
+    text-align: center;
+    font-size: 75px;
+    color: white;
+}
+
+.wrapper .card .circle{
+  position: relative;
+  /* height: 150px;
+  width: 150px; */
+  height: 500px;
+  width: 500px;
+  border-radius: 50%;
+  cursor: default;
+}
+.card .circle .box,
+.card .circle .box span{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+.card .circle .box{
+  height: 100%;
+  width: 100%;
+  /* background-image: url("../Seel/136507c9117f4978b9110555a7667c25.jpg"); */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  transition: all 0.7s;
+}
+.card .circle:hover .box{
+  transform: translate(-50%, -50%) scale(0.91);
+}
+.card .circle .box span,
+.wrapper .card .text{
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.circle .box span{
+  font-size: 38px;
+  font-family: sans-serif;
+  font-weight: 600;
+  transform: translate(-45%, -45%);
+  transition: all 0.1s;
+}
+.card .circle:hover .box span{
+  transform: translate(-45%, -45%) scale(1.09);
+}
+.card .text{
+  font-size: 40px;
+  font-family: 'Raleway', sans-serif;
+}
+
+  
+.simple {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    margin-top: 1%;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+
+.authors {
+    text-align: center;
+}
+
+
+.disclaimer {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    margin-top: 1%;
+    font-weight: bold;
+    font-size: 10px;
+}
+ 
+button {
+    text-decoration: none;
+    background-color: #800000;
+    color: white;
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 25px;
+    padding: 0.8%;
+    margin: 1%;
+    border: 3px solid #000000;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+button:hover {
+    text-decoration: none;
+    background-color: #4169E1;
+    color: #ffffff;
+    font-family: 'Otomanopee One', sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 0.8%;
+    margin: 1%;
+    border: 3px solid #4169E1;
+    border-radius: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+@media(max-width: 753px){
+  .wrapper{
+    max-width: 700px;
+  }
+  .wrapper .card{
+    width: calc(50% - 20px);
+    margin-bottom: 20px;
+    height:300px;
+  }
+  .authors a, p{
+    font-size: 12px;
+}
+#disclaimer {
+    font-size: 10px;
+}
+.wrapper .card .circle{
+    position: relative;
+    /* height: 150px;
+    width: 150px; */
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    cursor: default;
+  }
+
+  h1 {
+      font-size: 30px;;
+  }
+
+}
+@media(max-width: 505px){
+  .wrapper{
+    max-width: 500px;
+  }
+  .wrapper .card{
+    width: 100%;
+  }
+  .authors a, p{
+    font-size: 12px;
+}
+#disclaimer {
+    font-size: 10px;
+}
+
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: white;
+}

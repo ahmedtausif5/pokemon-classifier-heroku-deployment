@@ -35,7 +35,9 @@
         color: white;
         text-align: center;
     }
-    
+    a:hover {
+        color: #800000;
+    }
     #which-pokemon h1 {
         font-family: 'Otomanopee One', sans-serif;
         text-align: center;
