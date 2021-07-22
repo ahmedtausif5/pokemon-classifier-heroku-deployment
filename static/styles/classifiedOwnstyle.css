@@ -70,7 +70,7 @@ h1 {
 .card .circle .box{
   height: 100%;
   width: 100%;
-  /* background-image: url("../Seel/136507c9117f4978b9110555a7667c25.jpg"); */
+ background-color: #000000;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

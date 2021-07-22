@@ -16,7 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="#">
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/uploadPokemonstyle.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/uploadPokemonstyle.css') }}">
     <!-- <link rel="stylesheet" href="css/uploadPokemonstyle.css" /> -->
 </head>
 
@@ -24,12 +24,14 @@
 
     <div class="section" id="which-pokemon" style="margin-top: 5%;">
         <h1> Upload your Pokemon image to find out its name!</h1>
-        <p>We can name any Gen I Pokemon. To see the full list, <a href="https://www.serebii.net/pokemon/gen1pokemon.shtml" target="_blank">Click here.</a></p>
+        <p>We can name any Gen I Pokemon. To see the full list, <a
+                href="https://www.serebii.net/pokemon/gen1pokemon.shtml" target="_blank">Click here.</a></p>
 
     </div>
     <hr>
     <div class="section" id="which-human">
-        <form style="margin-top:5%" action="{{ url_for('classifiedPokemon') }}" method="POST" enctype="multipart/form-data">
+        <form style="margin-top:5%" action="{{ url_for('classifiedPokemon') }}" method="POST"
+            enctype="multipart/form-data">
             <input type="file" name="file" required />
             <input type="submit" />
         </form>
@@ -44,7 +46,9 @@
         <!-- <p class="simple"> This website is a personal project and is not related to Pokemon in any way.</p> -->
         <div class="authors">
             <p> <a href="https://github.com/ahmedtausif5" target="_blank">Tausif Ahmed</a> |
-                <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee" target="_blank">Mujibul Islam Dipto</a></p>
+                <a href="https://www.notion.so/mujiworkspace/Portfolio-fd1b536a6efd4a96b4811d87b88f16ee"
+                    target="_blank">Mujibul Islam Dipto</a>
+            </p>
         </div>
         <p id="disclaimer"> Note: This is a personal project and is not related to Pokemon in any way.</p>
     </footer>
