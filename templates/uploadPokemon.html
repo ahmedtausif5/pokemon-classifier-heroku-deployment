@@ -57,25 +57,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-
-<!--
-{% extends "base.html" %}
-
-{% block content %}
-  <h1>Upload Pokemon negga</h1>
-
-  <form action = "{{ url_for('classifiedPokemon') }}" method = "POST"
-     enctype = "multipart/form-data">
-     <input type = "file" name = "file" />
-     <input type = "submit"/>
-  </form>
-
-  <br>
-  <p> our classifier can only detect 150 pokemons, to see the list of pokemons that we can detect, <a href="{{ url_for('pokemonList') }}">click here</a> </p>
-{% endblock %} -->
