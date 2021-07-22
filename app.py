@@ -209,8 +209,7 @@ def classifiedPokemon():
                 list(label_dict.values()).index(out)]
 
             prob_1 = predictions[0][out]
-
-            if prob_1 >= 0.70:
+            if prob_1 >= 0.59:
                 # getting pokemon image directory
                 list_dir_string = f'static/{pokemon}'
                 pokemon_image_directory = listdir(list_dir_string)
