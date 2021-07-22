@@ -213,7 +213,7 @@ def classifiedPokemon():
 
             prob_1 = predictions[0][out]
 
-            print(prob_1)
+#            print(prob_1)
 
             if prob_1 >= 0.70:
                 # getting pokemon image directory
@@ -230,7 +230,7 @@ def classifiedPokemon():
                 return render_template('couldNotClassify.html')
 
         else:
-            print("Unsupported file uploaded")
+#            print("Unsupported file uploaded")
             return render_template('wrongFile.html')
 
 
@@ -352,7 +352,7 @@ def classifiedOwn():
                                                     pokemon_names=pokemon_names,
                                                     scaled_list=scaled_list)
        else:
-           print("Unsupported file uploaded")
+#           print("Unsupported file uploaded")
            return render_template('wrongFile.html')
 
 def prepare_image(img):
