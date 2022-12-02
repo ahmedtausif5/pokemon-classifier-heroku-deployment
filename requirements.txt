@@ -21,7 +21,7 @@ keras-nightly==2.5.0.dev2021032900
 Keras-Preprocessing==1.1.2
 Markdown==3.3.4
 MarkupSafe==2.0.1
-numpy==1.22
+numpy==1.22.0
 oauthlib==3.2.1
 opencv-python-headless==4.5.3.56
 opt-einsum==3.3.0
