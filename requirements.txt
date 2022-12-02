@@ -21,12 +21,12 @@ keras-nightly
 Keras-Preprocessing
 Markdown
 MarkupSafe
-numpy==1.22.0
+numpy
 oauthlib
 opencv-python-headless
 opt-einsum
-Pillow==9.0.0
-protobuf==3.18.3
+Pillow
+protobuf
 pyasn1
 pyasn1-modules
 requests
