@@ -322,5 +322,5 @@ def prepare_image(img):
     return preprocess_input(img_array_expanded_dims)
 
 
-if __name__ == '__main__':
-    app.run()
+# if __name__ == '__main__':
+#     app.run()
