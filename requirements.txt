@@ -1,3 +1,23 @@
+# --- Platform/runtime ---
+streamlit>=1.25
+
+# --- Core ML stack (stay on TF 2.5.x) ---
+tensorflow-cpu==2.5.2
+tensorflow-estimator==2.5.0
+
+# --- Pins required for TF 2.5 compatibility ---
+# protobuf >=3.21 breaks old TF; 3.20.3 is the last safe 3.x
+protobuf==3.20.3
+# TF 2.5 wheels expect these versions/ranges
+numpy==1.19.5
+h5py==3.1.0
+grpcio==1.34.1
+gast==0.4.0
+opt-einsum==3.3.0
+keras-preprocessing==1.1.2
+flatbuffers==1.12
+
+# --- Your other libs (kept) ---
 absl-py
 astunparse
 cachetools
@@ -6,27 +26,18 @@ chardet
 click
 colorama
 Flask
-flatbuffers
-gast
 google-auth
 google-auth-oauthlib
 google-pasta
-grpcio
 gunicorn
-h5py
 idna
 itsdangerous
 Jinja2
-keras-nightly
-Keras-Preprocessing
 Markdown
 MarkupSafe
-numpy
 oauthlib
 opencv-python-headless
-opt-einsum
 Pillow
-protobuf
 pyasn1
 pyasn1-modules
 requests
@@ -36,11 +47,11 @@ six
 tensorboard
 tensorboard-data-server
 tensorboard-plugin-wit
-tensorflow-cpu==2.5.2
-tensorflow-estimator
 termcolor
 typing-extensions
 urllib3
 Werkzeug
-wincertstore
 wrapt
+
+# Removed: keras-nightly  (conflicts with TF 2.5)
+# Removed: wincertstore   (Windows-only; not needed on Linux/Streamlit Cloud)
