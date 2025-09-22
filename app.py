@@ -1,17 +1,18 @@
-# app.py — minimal changes for Streamlit compatibility (no Flask)
+from flask import Flask, render_template, request
+from werkzeug.utils import secure_filename
+from werkzeug.datastructures import FileStorage
 from numpy import array, argmax, expand_dims, argsort
 from tensorflow.keras.applications.mobilenet import preprocess_input
 from tensorflow.keras.preprocessing import image
-from os import listdir, path
+from os import listdir
 from tensorflow.keras.models import load_model
 from cv2 import resize, cvtColor, COLOR_GRAY2BGRA, COLOR_BGRA2BGR
 from PIL import Image
-import streamlit as st
 
-# importing the model (unchanged)
+# importing the model
 new_model = load_model('pokemon_classifier_dropout=8,6_lr=0.0001.h5')
 
-# making a dictionary with the keys as labels (unchanged)
+# making a dictionary with the keys as labels
 label_dict = {'Abra': 0,
               'Aerodactyl': 1,
               'Alakazam': 2,
@@ -161,107 +162,165 @@ label_dict = {'Abra': 0,
               'Weezing': 146,
               'Wigglytuff': 147,
               'Zapdos': 148,
-              'Zubat': 149}
+              'Zubat': 149
+              }
+
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def home():
+    return render_template('home.html')
+
+
+@app.route('/uploadPokemon')
+def uploadPokemon():
+    return render_template('uploadPokemon.html')
+
+
+@app.route('/classifiedPokemon', methods=['GET', 'POST'])
+def classifiedPokemon():
+    if request.method == 'POST':
+        data = request.files['file']
+        try:
+            img = Image.open(data)
+
+        except:
+            img = None
+
+        if img is not None:
+            img = array(img)
+            img = resize(img, (224, 224))
+
+            # coverting channel 1 image to channel 3
+            if len(img.shape) == 2:
+                img = cvtColor(img, COLOR_GRAY2BGRA)
+
+            # converting channel 4 image to channel 3
+            if len(img.shape) > 2 and img.shape[2] == 4:
+                # convert the image from RGBA2RGB
+                img = cvtColor(img, COLOR_BGRA2BGR)
+
+            preprocessed_image = prepare_image(img)
+            predictions = new_model.predict(preprocessed_image)
+            out = argmax(predictions)
+            pokemon = list(label_dict.keys())[
+                list(label_dict.values()).index(out)]
+
+            prob_1 = predictions[0][out]
+            if prob_1 >= 0.29:
+                # getting pokemon image directory
+                list_dir_string = f'static/{pokemon}'
+                pokemon_image_directory = listdir(list_dir_string)
+
+                # returning image
+                pic1_name = pokemon_image_directory[0]
+                pic1_location = f'static/{pokemon}/{pic1_name}'
+
+                return render_template('classifiedPokemon.html',
+                                       pokemon=pokemon, pic1_location=pic1_location)
+            else:
+                return render_template('couldNotClassify.html')
+
+        else:
+            return render_template('wrongFile.html')
+
+
+@app.route('/uploadOwn')
+def uploadOwn():
+    return render_template('uploadOwn.html')
+
+
+@app.route('/classifiedOwn', methods=['GET', 'POST'])
+def classifiedOwn():
+    if request.method == 'POST':
+        data = request.files['file']
+
+        try:
+            img = Image.open(request.files['file'])
+        except:
+            img = None
+
+        if img is not None:
+            img = array(img)
+            img = resize(img, (224, 224))
+
+            # converting channel 1 image to channel 3
+            if len(img.shape) == 2:
+                img = cvtColor(img, COLOR_GRAY2BGRA)
+
+            # converting channel 4 image to channel 3
+            if len(img.shape) > 2 and img.shape[2] == 4:
+                # convert the image from RGBA2RGB
+                img = cvtColor(img, COLOR_BGRA2BGR)
+
+            preprocessed_image = prepare_image(img)
+            predictions = new_model.predict(preprocessed_image)
+            out = argmax(predictions)
+            pokemon = list(label_dict.keys())[
+                list(label_dict.values()).index(out)]
+
+            order_indexes = (argsort(predictions))
+
+            top_3_pokemons_indexes = [
+                order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3]]
+
+            prob_1 = round(predictions[0][top_3_pokemons_indexes[0]] * 100, 2)
+            prob_2 = round(predictions[0][top_3_pokemons_indexes[1]] * 100, 2)
+            prob_3 = round(predictions[0][top_3_pokemons_indexes[2]] * 100, 2)
+
+            top_3_prob_list = [prob_1, prob_2, prob_3]
+
+            scale_1 = (prob_1 / prob_1)
+            scale_2 = (prob_2 / prob_1)
+            scale_3 = (prob_3 / prob_1)
+
+            scaled_list = [scale_1, scale_2, scale_3]
+
+            pokemon_names = []
+            for pokemon_index in top_3_pokemons_indexes:
+                pokemon_names.append(list(label_dict.keys())[list(
+                    label_dict.values()).index(pokemon_index)])
+
+            # getting pokemon image directory
+            # pokemon 1
+            list_dir_string_1 = f'static/{pokemon_names[0]}'
+            pokemon_1_image_directory = listdir(list_dir_string_1)
+            # pokemon 2
+            list_dir_string_2 = f'static/{pokemon_names[1]}'
+            pokemon_2_image_directory = listdir(list_dir_string_2)
+            # pokemon 3
+            list_dir_string_3 = f'static/{pokemon_names[2]}'
+            pokemon_3_image_directory = listdir(list_dir_string_3)
+
+            # returning image
+            # returning pokemon 1 image
+            pic1_name = pokemon_1_image_directory[0]
+            pic1_location = f'../static/{pokemon_names[0]}/{pic1_name}'
+            # returning pokemon 2 image
+            pic2_name = pokemon_2_image_directory[0]
+            pic2_location = f'../static/{pokemon_names[1]}/{pic2_name}'
+            # returning pokemon 3 image
+            pic3_name = pokemon_3_image_directory[0]
+            pic3_location = f'../static/{pokemon_names[2]}/{pic3_name}'
+
+            return render_template('classifiedOwn.html', pokemon=pokemon,
+                                   pic1_location=pic1_location,
+                                   pic2_location=pic2_location,
+                                   pic3_location=pic3_location,
+                                   top_3_prob_list=top_3_prob_list,
+                                   pokemon_names=pokemon_names,
+                                   scaled_list=scaled_list)
+        else:
+            return render_template('wrongFile.html')
+
 
 def prepare_image(img):
     img_array = image.img_to_array(img)
     img_array_expanded_dims = expand_dims(img_array, axis=0)
     return preprocess_input(img_array_expanded_dims)
 
-# ---------------------------
-# Streamlit UI (replaces Flask routes/templates)
-# ---------------------------
-st.set_page_config(page_title="Pokémon Identifier", page_icon="🧪")
-st.title("🧪 Pokémon Identifier")
 
-mode = st.radio(
-    "Choose mode",
-    ["Classify (single result, 0.70 threshold)", "Classify (top-3)"],
-    index=0
-)
-
-uploaded = st.file_uploader("Upload an image", type=["png", "jpg", "jpeg", "webp"])
-if uploaded is not None:
-    try:
-        img = Image.open(uploaded)
-    except Exception:
-        img = None
-        st.error("Could not read the uploaded file as an image.")
-
-    if img is not None:
-        st.image(img, caption="Uploaded image", use_column_width=True)
-
-        # --- original preprocessing steps preserved ---
-        img_np = array(img)
-        img_np = resize(img_np, (224, 224))
-
-        # converting channel 1 image to channel 3
-        if len(img_np.shape) == 2:
-            img_np = cvtColor(img_np, COLOR_GRAY2BGRA)
-
-        # converting channel 4 image to channel 3
-        if len(img_np.shape) > 2 and img_np.shape[2] == 4:
-            # convert the image from RGBA2RGB
-            img_np = cvtColor(img_np, COLOR_BGRA2BGR)
-
-        preprocessed_image = prepare_image(img_np)
-        predictions = new_model.predict(preprocessed_image)
-        out = argmax(predictions)
-        pokemon = list(label_dict.keys())[list(label_dict.values()).index(out)]
-
-        if mode == "Classify (single result, 0.70 threshold)":
-            prob_1 = predictions[0][out]
-            if prob_1 >= 0.70:
-                st.subheader(f"Prediction: {pokemon} ({prob_1*100:.2f}%)")
-
-                # Show a sample image from static/<pokemon>/ if available
-                static_dir = f'static/{pokemon}'
-                if path.isdir(static_dir):
-                    files = listdir(static_dir)
-                    if files:
-                        st.image(f"{static_dir}/{files[0]}", caption=f"Sample: {pokemon}")
-                else:
-                    st.info("No static sample image found.")
-            else:
-                st.warning("Could not classify with ≥ 70% confidence.")
-
-        else:  # "Classify (top-3)"
-            order_indexes = (argsort(predictions))
-            top_3_indexes = [order_indexes[0][-1], order_indexes[0][-2], order_indexes[0][-3]]
-
-            prob_1 = round(predictions[0][top_3_indexes[0]] * 100, 2)
-            prob_2 = round(predictions[0][top_3_indexes[1]] * 100, 2)
-            prob_3 = round(predictions[0][top_3_indexes[2]] * 100, 2)
-
-            top_3_prob_list = [prob_1, prob_2, prob_3]
-
-            scale_1 = (prob_1 / prob_1) if prob_1 else 0.0
-            scale_2 = (prob_2 / prob_1) if prob_1 else 0.0
-            scale_3 = (prob_3 / prob_1) if prob_1 else 0.0
-
-            scaled_list = [scale_1, scale_2, scale_3]
-
-            pokemon_names = []
-            for idx in top_3_indexes:
-                pokemon_names.append(list(label_dict.keys())[list(label_dict.values()).index(idx)])
-
-            st.subheader("Top-3")
-            for i, (name, p) in enumerate(zip(pokemon_names, top_3_prob_list), start=1):
-                st.write(f"**{i}. {name}** — {p:.2f}%")
-                st.progress(min(max(scaled_list[i-1], 0.0), 1.0))
-
-            # Show sample images from static/<pokemon> if available
-            cols = st.columns(3)
-            for col, name in zip(cols, pokemon_names):
-                static_dir = f"static/{name}"
-                with col:
-                    if path.isdir(static_dir):
-                        files = listdir(static_dir)
-                        if files:
-                            st.image(f"{static_dir}/{files[0]}", caption=name)
-                    else:
-                        st.info(f"No sample for {name}")
-else:
-    st.info("👆 Upload an image to classify.")
-
-# No __main__ block or Flask app.run() — Streamlit runs this script directly.
+if __name__ == '__main__':
+    app.run()
