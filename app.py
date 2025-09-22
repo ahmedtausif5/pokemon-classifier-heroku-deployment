@@ -9,6 +9,15 @@ from tensorflow.keras.models import load_model
 from cv2 import resize, cvtColor, COLOR_GRAY2BGRA, COLOR_BGRA2BGR
 from PIL import Image
 
+
+
+import streamlit as st
+st.set_page_config(page_title="Pokémon Identifier")
+st.title("Pokémon Identifier")
+st.write("Upload an image to classify.")
+
+
+
 # importing the model
 new_model = load_model('pokemon_classifier_dropout=8,6_lr=0.0001.h5')
 
