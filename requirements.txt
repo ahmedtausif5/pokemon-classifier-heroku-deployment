@@ -1,9 +1,9 @@
 # --- Platform/runtime ---
-streamlit>=1.25
+streamlit>=1.37
 
 # --- Core ML stack (stay on TF 2.5.x) ---
-tensorflow-cpu==2.5.2
-tensorflow-estimator==2.5.0
+tensorflow-cpu==2.12.0
+#tensorflow-estimator==2.5.0
 
 # --- Pins required for TF 2.5 compatibility ---
 # protobuf >=3.21 breaks old TF; 3.20.3 is the last safe 3.x
