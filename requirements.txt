@@ -1,57 +1,10 @@
-# --- Platform/runtime ---
+# Web app
 streamlit>=1.37
-
-# --- Core ML stack (stay on TF 2.5.x) ---
-tensorflow-cpu==2.12.0
-#tensorflow-estimator==2.5.0
-
-# --- Pins required for TF 2.5 compatibility ---
-# protobuf >=3.21 breaks old TF; 3.20.3 is the last safe 3.x
-protobuf==3.20.3
-# TF 2.5 wheels expect these versions/ranges
-numpy==1.19.5
-h5py==3.1.0
-grpcio==1.34.1
-gast==0.4.0
-opt-einsum==3.3.0
-keras-preprocessing==1.1.2
-flatbuffers==1.12
-
-# --- Your other libs (kept) ---
-absl-py
-astunparse
-cachetools
-certifi
-chardet
-click
-colorama
 Flask
-google-auth
-google-auth-oauthlib
-google-pasta
 gunicorn
-idna
-itsdangerous
-Jinja2
-Markdown
-MarkupSafe
-oauthlib
-opencv-python-headless
-Pillow
-pyasn1
-pyasn1-modules
 requests
-requests-oauthlib
-rsa
-six
-tensorboard
-tensorboard-data-server
-tensorboard-plugin-wit
-termcolor
-typing-extensions
-urllib3
-Werkzeug
-wrapt
+Pillow
+opencv-python-headless
 
-# Removed: keras-nightly  (conflicts with TF 2.5)
-# Removed: wincertstore   (Windows-only; not needed on Linux/Streamlit Cloud)
+# ML stack
+tensorflow-cpu==2.12.0
