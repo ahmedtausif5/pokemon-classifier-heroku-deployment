@@ -17,7 +17,7 @@ st.write("Upload an image and I'll predict the Pokémon using your CNN model.")
 # ---------------------------
 # Paths / config
 # ---------------------------
-MODEL_PATH = os.getenv("MODEL_PATH", "model.h5")        # <- adjust if your model file lives elsewhere
+MODEL_PATH = os.getenv("MODEL_PATH", "pokemon_classifier_dropout=8,6_lr=0.0001.h5")        # <- adjust if your model file lives elsewhere
 LABELS_PATH = os.getenv("LABELS_PATH", "class_names.txt")  # One class name per line (optional)
 IMAGE_SIZE = (224, 224)   # match what your model expects
 TOPK = 3
